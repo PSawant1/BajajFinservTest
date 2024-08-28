@@ -1,0 +1,751 @@
+{
+	"info": {
+		"_postman_id": "ed58517e-aeac-4fd3-b2b2-6702273e4799",
+		"name": "User API Tests",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" width=\"2162\" height=\"1530\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36404358"
+	},
+	"item": [
+		{
+			"name": "TC01 - Create Valid User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"firstName\": \"Pratik11\",\n    \"lastName\": \"Savant11\",\n    \"phoneNumber\": 8822337755,\n    \"emailId\": \"pratiks1.user@example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Test\",\n    \"phoneNumber\": 9999999999,\n    \"emailId\": \"test.test@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "TC02 - Create a User with Existing (phonenumber)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Pratik22\",\n    \"lastName\": \"User\",\n    \"phoneNumber\": 8822337755,\n    \"emailId\": \"pratiks1.user@example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"Test\",\n    \"lastName\": \"User\",\n    \"phoneNumber\": 9999999999,  // Same phone number as TC01\n    \"emailId\": \"unique.email@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "TC03 - Create a User with Existing (emailid)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"User\",\n    \"lastName\": \"Test\",\n    \"phoneNumber\": 8822337755,\n    \"emailId\": \"pratiks1.user@example.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"User\",\n    \"lastName\": \"Test\",\n    \"phoneNumber\": 8888888888,\n    \"emailId\": \"test.test@test.com\"  // Same email ID as TC01\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "TC04 - Create a User without (roll number)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Pratik112\",\n    \"lastName\": \"savant112\",\n    \"phoneNumber\": 7777777237,\n    \"emailId\": \"norollnumber@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"Test\",\n    \"lastName\": \"NoRollNumber\",\n    \"phoneNumber\": 7777777777,\n    \"emailId\": \"norollnumber@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "TC05 - Create a User with Missing (firstName)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"lastName\": \"savant1234\",\n    \"phoneNumber\": 6666666666,\n    \"emailId\": \"missingfirstname@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"lastName\": \"Test\",\n    \"phoneNumber\": 6666666666,\n    \"emailId\": \"missingfirstname@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "TC06 - Create a User with Missing lastName",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"pratik234\",\n    \"phoneNumber\": 5555555555,\n    \"emailId\": \"missinglastname@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"Test\",\n    \"phoneNumber\": 5555555555,\n    \"emailId\": \"missinglastname@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "TC07 - Create a User with Missing phoneNumber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"pratik121\",\n    \"lastName\": \"savant1231\",\n    \"emailId\": \"missingphonenumber@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Test\",\n    \"emailId\": \"missingphonenumber@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "8. TC08 - Create a User with Missing emailId ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"pratikk\",\n    \"lastName\": \"savants\",\n    \"phoneNumber\": 4444444465\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"Test\",\n    \"lastName\": \"Test\",\n    \"phoneNumber\": 4444444444\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "TC09 - Create a User with Invalid emailId",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Invalid\",\n    \"lastName\": \"savant\",\n    \"phoneNumber\": 9833333333,\n    \"emailId\": \"invalidemail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"Invalid\",\n    \"lastName\": \"Email\",\n    \"phoneNumber\": 3333333333,\n    \"emailId\": \"invalidemail.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "10. TC10 - Create a User with Non-Numeric phoneNumber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"NonNumeric\",\n    \"lastName\": \"Phone\",\n    \"phoneNumber\": \"abcdefg\", \n    \"emailId\": \"nonnumericphone@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"NonNumeric\",\n    \"lastName\": \"Phone\",\n    \"phoneNumber\": \"abcdefg\", \n    \"emailId\": \"nonnumericphone@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "11. TC11 - Send an Empty Request Body",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "12. TC12 - Create a User with Excessively Long firstName or lastName",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\n    \"lastName\": \"Test\",\n    \"phoneNumber\": 2222222222,\n    \"emailId\": \"longfirstname@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"ThisIsAReallyLongFirstNameThatShouldFailValidation\",\n    \"lastName\": \"Test\",\n    \"phoneNumber\": 2222222222,\n    \"emailId\": \"longfirstname@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "13. TC13 - Test API with a Valid phonenumber but Invalid long Number",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"pratiks\",\n    \"lastName\": \"LongPhoneNumber\",\n    \"phoneNumber\": 1234567890123453543657, \n    \"emailId\": \"longphone@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"Test\",\n    \"lastName\": \"LongPhone\",\n    \"phoneNumber\": 123456789012345, \n    \"emailId\": \"longphone@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "14. TC14 - Create a User Using HTTP GET Instead of POST(wrong api call)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request GET 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: application/json'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "15. TC15 - Create a User with a Valid roll-number but Invalid Value Format",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "invalid"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"pratikss\",\n    \"lastName\": \"InvalidRoll\",\n    \"phoneNumber\": 1111111111,\n    \"emailId\": \"invalidroll@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: invalid' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"firstName\": \"Test\",\n    \"lastName\": \"InvalidRoll\",\n    \"phoneNumber\": 1111111111,\n    \"emailId\": \"invalidroll@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "17. TC17 - Send Request with Content-Type Other Than json",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/plain"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"WrongContentType\",\n    \"phoneNumber\": 3030303030,\n    \"emailId\": \"wrongcontenttype@test.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/create/user",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"create",
+						"user"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfhldevapigw.healthrx.co.in/automation-campus/create/user' \\\n--header 'roll-number: 1' \\\n--header 'Content-Type: text/plain' \\\n--data-raw '{\n    \"firstName\": \"Test\",\n    \"lastName\": \"WrongContentType\",\n    \"phoneNumber\": 3030303030,\n    \"emailId\": \"wrongcontenttype@test.com\"\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "18. TC18 - Create a User with SQL Injection Attempt in firstName",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://bfh",
+					"protocol": "https",
+					"host": [
+						"bfh"
+					]
+				},
+				"description": "Generated from cURL: curl --location --request POST 'https://bfh\n"
+			},
+			"response": []
+		},
+		{
+			"name": "TC16 - Fetch a User by Non-Existent phoneNumber",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "roll-number",
+						"value": "1"
+					}
+				],
+				"url": {
+					"raw": "https://bfhldevapigw.healthrx.co.in/automation-campus/get/user?phoneNumber=0000000000",
+					"protocol": "https",
+					"host": [
+						"bfhldevapigw",
+						"healthrx",
+						"co",
+						"in"
+					],
+					"path": [
+						"automation-campus",
+						"get",
+						"user"
+					],
+					"query": [
+						{
+							"key": "phoneNumber",
+							"value": "0000000000"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl --location --request GET 'https://bfhldevapigw.healthrx.co.in/automation-campus/get/user?phoneNumber=0000000000' \\\n--header 'roll-number: 1'\n"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
